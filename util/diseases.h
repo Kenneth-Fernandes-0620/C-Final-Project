@@ -6,8 +6,8 @@
 #define DISEASES_H
 #endif
 
-int diseases_rows = 0, diseases_columns = 0;
-char **diseases_array;
+int DISEASES = 0;
+char **DISEASES_ARRAY;
 
 int load_diseases();
 void parse_diseases(char *, char);
@@ -36,16 +36,16 @@ void parse_diseases(char *line, char seperator)
     char *token, *temp = line;
 
     while (*temp != '\0')
-        *(temp++) == ',' ? diseases_rows++ : 0;
+        *(temp++) == ',' ? DISEASES++ : 0;
 
-    diseases_array = (char **)malloc(diseases_rows * sizeof(char *));
+    DISEASES_ARRAY = (char **)malloc(DISEASES * sizeof(char *));
     token = strtok(line, &seperator);
     int i = 0;
 
     while (token != NULL)
     {
-        diseases_array[i] = (char *)malloc((strlen(token) + 1) * sizeof(char));
-        strcpy(diseases_array[i], token);
+        DISEASES_ARRAY[i] = (char *)malloc((strlen(token) + 1) * sizeof(char));
+        strcpy(DISEASES_ARRAY[i], token);
         token = strtok(NULL, ",");
         i++;
     }
@@ -53,7 +53,7 @@ void parse_diseases(char *line, char seperator)
 
 void free_diseases_array()
 {
-    for (int i = 0; i < diseases_rows; i++)
-        free(diseases_array[i]);
-    free(diseases_array);
+    for (int i = 0; i < DISEASES; i++)
+        free(DISEASES_ARRAY[i]);
+    free(DISEASES_ARRAY);
 }

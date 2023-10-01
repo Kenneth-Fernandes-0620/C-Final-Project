@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "gtk.h": "c",
-        "diseases.h": "c"
+        "diseases.h": "c",
+        "services.h": "c"
     }
 }
