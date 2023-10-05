@@ -611,6 +611,7 @@ static void clean_up_memory()
     free_diseases_array();
     free_doctors_array();
     free_services_array();
+    free_up_validator()
 }
 
 static void inject_data()
