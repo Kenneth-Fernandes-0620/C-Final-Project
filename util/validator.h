@@ -101,7 +101,7 @@ char *date_to_string(Date date)
     if (dateString == NULL)
     {
         fprintf(stderr, "Memory allocation failed\n");
-        return NULL
+        return NULL;
     }
 
     // Format the date into the buffer
@@ -141,19 +141,23 @@ char *get_one_week_ahead(char *dateStr)
         currentDate.month = 10;
         currentDate.year = 2023;
 
-        printf("Parsed date: ");
-        date_to_string(userDate);
+        // char *date_as_string = date_to_string(userDate);
+        // printf("Parsed date: %s", date_as_string);
 
         if (userDate.year < currentDate.year ||
             (userDate.year == currentDate.year && userDate.month < currentDate.month) ||
             (userDate.year == currentDate.year && userDate.month == currentDate.month && userDate.day < currentDate.day))
 
+        {
             printf("Entered date should be greater than or equal to today's date.\n");
+            return NULL;
+        }
         else
         {
             Date nextWeek = one_week_ahead(userDate);
             printf("Date one week ahead: ");
-            date_to_string(nextWeek);
+            char *result_date = date_to_string(nextWeek);
+            return result_date;
         }
     }
     else

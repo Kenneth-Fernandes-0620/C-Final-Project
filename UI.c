@@ -401,7 +401,11 @@ static void display_appointment_booked_window(GtkWidget *widget, gpointer argume
         char date_string[40] = "Appointment Booked for ";
         char *actual_date = g_date_time_format(g_date_time_new_now_local(), "%d-%m-%Y");
 
-        strcat(date_string, actual_date);
+        printf("%s", actual_date);
+
+        char *one_week_ahead_date = get_one_week_ahead(actual_date);
+
+        strcat(date_string, one_week_ahead_date);
 
         label = gtk_label_new(date_string);
         gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 4, 1);
@@ -611,7 +615,7 @@ static void clean_up_memory()
     free_diseases_array();
     free_doctors_array();
     free_services_array();
-    free_up_validator()
+    free_up_validator();
 }
 
 static void inject_data()
