@@ -58,6 +58,10 @@ int isValidDate(const char *date, const char *current_date)
         return 0;
     else if ((day < 1 || day > 31) && (month < 1 || month > 12) && (year < 2000 || year > 2100))
         return 0;
+    int current_day, current_month, current_year;
+    sscanf(current_date, "%2d-%2d-%4d", &current_day, &current_month, &current_year);
+    if (year < current_year || (year >= current_year && month < current_month) || (year >= current_year && month >= current_month && day < current_day))
+        return 0;
     return 1;
 }
 
